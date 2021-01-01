@@ -1,0 +1,45 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+  "name":"\u831c\u8363\u5b66\u4e60",
+  "version": "1.0.5",
+  "manifest_version": 2,
+  "description": "study-english",
+  "icons": {
+    "16": "imgs/16.png",
+    "24": "imgs/24.png",
+    "32": "imgs/32.png",
+    "48": "imgs/48.png",
+    "64": "imgs/64.png",
+    "72": "imgs/72.png",
+    "96": "imgs/96.png",
+    "128": "imgs/128.png"
+  },
+  "browser_action": {
+      "default_icon": "imgs/16.png",
+      "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*","https://*/*"],
+      "run_at":"document_start",
+      "all_frames":true,
+      "js": ["dest/content.js"]
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://fanyi.mlife.top; object-src 'self'",
+  "web_accessible_resources":[
+      "dest/*",
+      "imgs/*",
+      "bootstrap/*"
+  ],
+  "background": {
+    "page": "background.html"
+  },
+  "permissions": [
+    "<all_urls>",
+    "contextMenus",
+    "https://*/*",
+    "http://*/*"
+  ]
+}
